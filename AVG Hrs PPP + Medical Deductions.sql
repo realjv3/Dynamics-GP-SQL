@@ -1,5 +1,5 @@
 /*
-Selecting for active employees' average hours per pay period, and their active medical deductions
+Selecting for active employees with 30 or more average hours per pay period, and their active medical deductions
 */
 
 
@@ -23,13 +23,15 @@ PIVOT( MAX(DEDUCTON)
 	FOR DEDUCTON IN ([BUYUPF], [BUYUPS], [COREF], [CORES], [DFHR], [DFS], [DSHR], [DSS], [VFHR], [VFS], [VSHR], [VSS]) ) AS P;
 
 
-insert into ##1		--inserting into temp table for sum of employee's hours, one row per pay period
-select a.employid, a.trxbegdt, sum(a.untstopy)
-from upr30300 a join upr00100 b on a.employid = b.employid 
-where trxbegdt > '2013-12-26' and b.inactive = 0 and untstopy > 0
-group by a.employid, a.trxbegdt
+INSERT INTO ##1		--inserting into temp table for sum of employee's hours, one row per pay period
+SELECT a.employid, a.trxbegdt, sum(a.untstopy)
+FROM upr30300 a join upr00100 b on a.employid = b.employid 
+WHERE trxbegdt > '2014-02-09'
+AND b.inactive = 0 
+AND untstopy > 0
+GROUP BY a.employid, a.trxbegdt
 
-select DB_NAME() [Company], b.deprtmnt, a.employid, b.jobtitle,
+SELECT DB_NAME() [Company], b.deprtmnt, a.employid, b.jobtitle,
 CASE 
       WHEN b.EMPLOYMENTTYPE = 1 THEN 'Full Time Regular' 
       WHEN b.EMPLOYMENTTYPE = 2 THEN 'Full Time Temp'
@@ -38,23 +40,26 @@ CASE
 	  WHEN b.EMPLOYMENTTYPE = 5 THEN 'Intern'
 	  WHEN b.EMPLOYMENTTYPE = 6 THEN 'Other' 
    END AS [Employment Type],
-b.frstname, b.lastname, b.BRTHDATE, 
+b.frstname, b.lastname, CONVERT(DATE, b.BRTHDATE,101) AS DOB, 
 CASE 
       WHEN b.GENDER = 1 THEN 'Male' 
       WHEN b.GENDER = 2 THEN 'Female'
    END AS Gender, 
-b.STRTDATE, avg(a.untstopy) [Avg Hours PPP], c.ZIPCODE,
-d.BUYUPF [BuyUp Fam], d.BUYUPS [BuyUp Sng], d.COREF [Core Fam], d.CORES [Core Sng], 
+CONVERT(DATE, b.STRTDATE,101) AS [Hire Date], 
+ROUND(AVG(a.untstopy), 2) AS [AVG Hours PPP], c.ZIPCODE, d.BUYUPF [BuyUp Fam],
+d.BUYUPS [BuyUp Sng], d.COREF [Core Fam], d.CORES [Core Sng], 
 d.DFHR [Dental Fam Hrly], d.DFS [Dental Fam Salry], d.DSHR [Dental Sng Hrly], d.DSS [Dental Dng Salry], 
 d.VFHR [Vision Fam Hrly], d.VFS [Vision Fam Salry], d.VSHR [Vision Sng Hrly], d.VSS [Vision Sng Salry]
 
 from ##1 a join upr00100 b on a.employid = b.employid 
 		   JOIN UPR00102 c ON a.employid = c.EMPLOYID
-		   LEFT JOIN ##2 d ON a.employid = d.EMPLOYID	--using left join because not all active employees in ##1 are in ##2 (only empl. with med deds. are in ##2)
+		   LEFT JOIN ##2 d ON a.employid = d.EMPLOYID	--using left join because not all active employees in ##1 are in ##2 (only empl. with med deds. are in ##2) 
 
 --have to put all fields in 'group by' clause b/c using avg() on units to pay field; if one field gets aggregated, all fields get aggregated		
-group by a.employid, b.frstname, b.lastname, b.BRTHDATE, b.EMPLOYMENTTYPE, b.deprtmnt, b.jobtitle, b.GENDER, b.STRTDATE, c.ZIPCODE,
+GROUP BY a.employid, b.frstname, b.lastname, b.BRTHDATE, b.EMPLOYMENTTYPE, b.deprtmnt, b.jobtitle, b.GENDER, b.STRTDATE, c.ZIPCODE,
 d.BUYUPF, d.BUYUPS, d.COREF, d.CORES, d.DFHR, d.DFS, d.DSHR, d.DSS, d.VFHR, d.VFS, d.VSHR, d.VSS
+
+HAVING AVG(a.untstopy) >= 30	--WHERE can't use aggregate function, so using HAVING instead
 
 --cleanup, dropping temporary tables
 drop table ##1
