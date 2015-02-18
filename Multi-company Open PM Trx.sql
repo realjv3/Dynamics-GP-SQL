@@ -1,11 +1,53 @@
-SELECT db_name(DB_ID('HAMPT')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], DOCDATE [Document Date], DUEDATE [Due Date], 
-DOCNUMBR [Document Number], DOCAMNT [Document Amount], DUEDATE [Due Date]
-FROM HAMPT.dbo.PM20000 a JOIN HAMPT.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+SELECT db_name(DB_ID('FRI')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], CONVERT(DATE, DOCDATE, 101) [Document Date], 
+CONVERT(DATE, DUEDATE, 101) [Due Date], DOCNUMBR [Document Number], CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+FROM FRI.dbo.PM20000 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 
 UNION ALL
 
-SELECT db_name(DB_ID('MGMT')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], DOCDATE [Document Date], DUEDATE [Due Date], 
-DOCNUMBR [Document Number], DOCAMNT [Document Amount], DUEDATE [Due Date]
+SELECT db_name(DB_ID('FRII')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
+DOCNUMBR [Document Number], CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+FROM FRII.dbo.PM20000 a JOIN FRII.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+
+UNION ALL
+
+SELECT db_name(DB_ID('FRNJ')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
+DOCNUMBR [Document Number], CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+FROM FRNJ.dbo.PM20000 a JOIN FRNJ.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+
+UNION ALL
+
+SELECT db_name(DB_ID('MASPK')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
+DOCNUMBR [Document Number], CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+FROM MASPK.dbo.PM20000 a JOIN MASPK.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+
+UNION ALL
+
+SELECT db_name(DB_ID('MGMT')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
+DOCNUMBR [Document Number], CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
 FROM MGMT.dbo.PM20000 a JOIN MGMT.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 
-ORDER BY a.VENDORID, a.DOCDATE
+UNION ALL
+
+SELECT db_name(DB_ID('MI')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
+DOCNUMBR [Document Number], CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+FROM MI.dbo.PM20000 a JOIN MI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+
+UNION ALL
+
+SELECT db_name(DB_ID('SHIRL')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
+DOCNUMBR [Document Number], CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+FROM SHIRL.dbo.PM20000 a JOIN SHIRL.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+
+UNION ALL
+
+SELECT db_name(DB_ID('REI')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
+DOCNUMBR [Document Number], CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+FROM REI.dbo.PM20000 a JOIN REI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+
+UNION ALL
+
+SELECT db_name(DB_ID('REII')) Company, a.VENDORID [Vendor ID], b.VENDNAME [Vendor Name], VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
+DOCNUMBR [Document Number], CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+FROM REII.dbo.PM20000 a JOIN REII.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+
+ORDER BY a.VENDORID, [Document Date]

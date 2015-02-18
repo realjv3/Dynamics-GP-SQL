@@ -22,7 +22,6 @@ FROM PivotData
 PIVOT( MAX(DEDUCTON)	
 	FOR DEDUCTON IN ([BUYUPF], [BUYUPS], [COREF], [CORES], [DFHR], [DFS], [DSHR], [DSS], [VFHR], [VFS], [VSHR], [VSS]) ) AS P;
 
-
 INSERT INTO ##1		--inserting into temp table for sum of employee's hours, one row per pay period
 SELECT a.employid, a.trxbegdt, sum(a.untstopy)
 FROM upr30300 a join upr00100 b on a.employid = b.employid 
