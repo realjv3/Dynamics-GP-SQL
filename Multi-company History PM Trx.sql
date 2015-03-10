@@ -27,7 +27,7 @@ END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], CONVERT(DATE, DOCDATE, 101) [Document Date], 
 CONVERT(DATE, DUEDATE, 101) [Due Date], CONVERT(DATE, POSTEDDT, 1) [Posted Date], CONVERT(DATE, PSTGDATE, 101) [Posting Date], DOCNUMBR [Document Number], a.TRXDSCRN Description,
 CONVERT(MONEY, DOCAMNT, 1) [Document Amount], CONVERT(MONEY, PRCHAMNT, 1) [Purchase Amount]
-FROM FRII.dbo.PM30200 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+FROM FRII.dbo.PM30200 a JOIN FRII.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 WHERE POSTEDDT > '03-01-2015'		--select Sunday before last for lookback period 
  
 UNION ALL
@@ -44,7 +44,7 @@ END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], CONVERT(DATE, DOCDATE, 101) [Document Date], 
 CONVERT(DATE, DUEDATE, 101) [Due Date], CONVERT(DATE, POSTEDDT, 1) [Posted Date], CONVERT(DATE, PSTGDATE, 101) [Posting Date], DOCNUMBR [Document Number], a.TRXDSCRN Description,
 CONVERT(MONEY, DOCAMNT, 1) [Document Amount], CONVERT(MONEY, PRCHAMNT, 1) [Purchase Amount]
-FROM FRNJ.dbo.PM30200 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+FROM FRNJ.dbo.PM30200 a JOIN FRNJ.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 WHERE POSTEDDT > '03-01-2015'		--select Sunday before last for lookback period 
 
 UNION ALL
@@ -61,7 +61,7 @@ END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], CONVERT(DATE, DOCDATE, 101) [Document Date], 
 CONVERT(DATE, DUEDATE, 101) [Due Date], CONVERT(DATE, POSTEDDT, 1) [Posted Date], CONVERT(DATE, PSTGDATE, 101) [Posting Date], DOCNUMBR [Document Number], a.TRXDSCRN Description,
 CONVERT(MONEY, DOCAMNT, 1) [Document Amount], CONVERT(MONEY, PRCHAMNT, 1) [Purchase Amount]
-FROM MASPK.dbo.PM30200 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+FROM MASPK.dbo.PM30200 a JOIN MASPK.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 WHERE POSTEDDT > '03-01-2015'		--select Sunday before last for lookback period 
 
 UNION ALL
@@ -78,7 +78,7 @@ END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], CONVERT(DATE, DOCDATE, 101) [Document Date], 
 CONVERT(DATE, DUEDATE, 101) [Due Date], CONVERT(DATE, POSTEDDT, 1) [Posted Date], CONVERT(DATE, PSTGDATE, 101) [Posting Date], DOCNUMBR [Document Number], a.TRXDSCRN Description,
 CONVERT(MONEY, DOCAMNT, 1) [Document Amount], CONVERT(MONEY, PRCHAMNT, 1) [Purchase Amount]
-FROM MGMT.dbo.PM30200 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+FROM MGMT.dbo.PM30200 a JOIN MGMT.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 WHERE POSTEDDT > '03-01-2015'		--select Sunday before last for lookback period 
 UNION ALL
 
@@ -94,7 +94,7 @@ END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], CONVERT(DATE, DOCDATE, 101) [Document Date], 
 CONVERT(DATE, DUEDATE, 101) [Due Date], CONVERT(DATE, POSTEDDT, 1) [Posted Date], CONVERT(DATE, PSTGDATE, 101) [Posting Date], DOCNUMBR [Document Number], a.TRXDSCRN Description,
 CONVERT(MONEY, DOCAMNT, 1) [Document Amount], CONVERT(MONEY, PRCHAMNT, 1) [Purchase Amount]
-FROM MI.dbo.PM30200 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+FROM MI.dbo.PM30200 a JOIN MI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 WHERE POSTEDDT > '03-01-2015'		--select Sunday before last for lookback period 
 
 UNION ALL
@@ -111,7 +111,7 @@ END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], CONVERT(DATE, DOCDATE, 101) [Document Date], 
 CONVERT(DATE, DUEDATE, 101) [Due Date], CONVERT(DATE, POSTEDDT, 1) [Posted Date], CONVERT(DATE, PSTGDATE, 101) [Posting Date], DOCNUMBR [Document Number], a.TRXDSCRN Description,
 CONVERT(MONEY, DOCAMNT, 1) [Document Amount], CONVERT(MONEY, PRCHAMNT, 1) [Purchase Amount]
-FROM SHIRL.dbo.PM30200 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+FROM SHIRL.dbo.PM30200 a JOIN SHIRL.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 WHERE POSTEDDT > '03-01-2015'		--select Sunday before last for lookback period 
 
 UNION ALL
@@ -128,7 +128,7 @@ END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], CONVERT(DATE, DOCDATE, 101) [Document Date], 
 CONVERT(DATE, DUEDATE, 101) [Due Date], CONVERT(DATE, POSTEDDT, 1) [Posted Date], CONVERT(DATE, PSTGDATE, 101) [Posting Date], DOCNUMBR [Document Number], a.TRXDSCRN Description,
 CONVERT(MONEY, DOCAMNT, 1) [Document Amount], CONVERT(MONEY, PRCHAMNT, 1) [Purchase Amount]
-FROM REI.dbo.PM30200 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+FROM REI.dbo.PM30200 a JOIN REI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 WHERE POSTEDDT > '03-01-2015'		--select Sunday before last for lookback period 
 
 UNION ALL
@@ -145,7 +145,7 @@ END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], CONVERT(DATE, DOCDATE, 101) [Document Date], 
 CONVERT(DATE, DUEDATE, 101) [Due Date], CONVERT(DATE, POSTEDDT, 1) [Posted Date], CONVERT(DATE, PSTGDATE, 101) [Posting Date], DOCNUMBR [Document Number], a.TRXDSCRN Description,
 CONVERT(MONEY, DOCAMNT, 1) [Document Amount], CONVERT(MONEY, PRCHAMNT, 1) [Purchase Amount]
-FROM REII.dbo.PM30200 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+FROM REII.dbo.PM30200 a JOIN REII.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 WHERE POSTEDDT > '03-01-2015'		--select Sunday before last for lookback period 
 
 ORDER BY a.VENDORID, [Document Date]
