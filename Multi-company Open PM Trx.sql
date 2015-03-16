@@ -8,8 +8,14 @@ CASE
 	WHEN DOCTYPE = 6 THEN 'Payment'
 END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number], CONVERT(DATE, DOCDATE, 101) [Document Date], 
-CONVERT(DATE, DUEDATE, 101) [Due Date], DOCNUMBR [Document Number], a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+CONVERT(DATE, DUEDATE, 101) [Due Date], DOCNUMBR [Document Number],
+CASE
+	WHEN a.hold = 0 THEN ' '
+	WHEN a.hold = 1 THEN 'HOLD'
+END Hold,
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
 FROM FRI.dbo.PM20000 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+AND VOIDED = 0
 
 UNION ALL
 
@@ -23,8 +29,14 @@ CASE
 	WHEN DOCTYPE = 6 THEN 'Payment'
 END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
-DOCNUMBR [Document Number], a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+DOCNUMBR [Document Number],  
+CASE
+	WHEN a.hold = 0 THEN ' '
+	WHEN a.hold = 1 THEN 'HOLD'
+END Hold,
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
 FROM FRII.dbo.PM20000 a JOIN FRII.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+AND VOIDED = 0
 
 UNION ALL
 
@@ -38,8 +50,14 @@ CASE
 	WHEN DOCTYPE = 6 THEN 'Payment'
 END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
-DOCNUMBR [Document Number], a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+DOCNUMBR [Document Number],  
+CASE
+	WHEN a.hold = 0 THEN ' '
+	WHEN a.hold = 1 THEN 'HOLD'
+END Hold,
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
 FROM FRNJ.dbo.PM20000 a JOIN FRNJ.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+AND VOIDED = 0
 
 UNION ALL
 
@@ -53,8 +71,14 @@ CASE
 	WHEN DOCTYPE = 6 THEN 'Payment'
 END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
-DOCNUMBR [Document Number], a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+DOCNUMBR [Document Number],  
+CASE
+	WHEN a.hold = 0 THEN ' '
+	WHEN a.hold = 1 THEN 'HOLD'
+END Hold,
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
 FROM MASPK.dbo.PM20000 a JOIN MASPK.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+AND VOIDED = 0
 
 UNION ALL
 
@@ -68,8 +92,14 @@ CASE
 	WHEN DOCTYPE = 6 THEN 'Payment'
 END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
-DOCNUMBR [Document Number], a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+DOCNUMBR [Document Number],  
+CASE
+	WHEN a.hold = 0 THEN ' '
+	WHEN a.hold = 1 THEN 'HOLD'
+END Hold,
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
 FROM MGMT.dbo.PM20000 a JOIN MGMT.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+AND VOIDED = 0
 
 UNION ALL
 
@@ -83,8 +113,14 @@ CASE
 	WHEN DOCTYPE = 6 THEN 'Payment'
 END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
-DOCNUMBR [Document Number], a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+DOCNUMBR [Document Number],  
+CASE
+	WHEN a.hold = 0 THEN ' '
+	WHEN a.hold = 1 THEN 'HOLD'
+END Hold,
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
 FROM MI.dbo.PM20000 a JOIN MI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+AND VOIDED = 0
 
 UNION ALL
 
@@ -98,8 +134,14 @@ CASE
 	WHEN DOCTYPE = 6 THEN 'Payment'
 END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
-DOCNUMBR [Document Number], a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+DOCNUMBR [Document Number],  
+CASE
+	WHEN a.hold = 0 THEN ' '
+	WHEN a.hold = 1 THEN 'HOLD'
+END Hold,
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
 FROM SHIRL.dbo.PM20000 a JOIN SHIRL.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+AND VOIDED = 0
 
 UNION ALL
 
@@ -113,8 +155,14 @@ CASE
 	WHEN DOCTYPE = 6 THEN 'Payment'
 END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
-DOCNUMBR [Document Number], a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+DOCNUMBR [Document Number],  
+CASE
+	WHEN a.hold = 0 THEN ' '
+	WHEN a.hold = 1 THEN 'HOLD'
+END Hold,
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
 FROM REI.dbo.PM20000 a JOIN REI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+AND VOIDED = 0
 
 UNION ALL
 
@@ -128,7 +176,13 @@ CASE
 	WHEN DOCTYPE = 6 THEN 'Payment'
 END [Document Type],
 VCHRNMBR [Voucher Number], BACHNUMB [Batch Number],CONVERT(DATE, DOCDATE, 101), CONVERT(DATE, DUEDATE, 101) [Due Date], 
-DOCNUMBR [Document Number], a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Document Amount]
+DOCNUMBR [Document Number],  
+CASE
+	WHEN a.hold = 0 THEN ' '
+	WHEN a.hold = 1 THEN 'HOLD'
+END Hold,
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
 FROM REII.dbo.PM20000 a JOIN REII.dbo.PM00200 b ON a.VENDORID = b.VENDORID
+AND VOIDED = 0
 
-ORDER BY a.VENDORID, [Document Date]
+ORDER BY b.vendname, [Document Date]

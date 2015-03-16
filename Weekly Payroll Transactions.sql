@@ -1,6 +1,6 @@
 --setting these variables so fields between these UNION ALL'd queries are the same data types
-DECLARE @TRXBEGDT date; SET @TRXBEGDT = '02-25-2015'; --MANUALLY SET DATE get pay period begin date from first query
-DECLARE @TRXENDDT date; SET @TRXENDDT = '03-03-2015'; --MANUALLY SET DATE get pay period end date from first query
+DECLARE @TRXBEGDT date; SET @TRXBEGDT = '03-02-2015'; --MANUALLY SET DATE get pay period begin date from first query
+DECLARE @TRXENDDT date; SET @TRXENDDT = '03-08-2015'; --MANUALLY SET DATE get pay period end date from first query
 DECLARE @UNTSTOPY numeric; SET @UNTSTOPY = 0;
 DECLARE @PAYRATE numeric; SET @PAYRATE = 0;
 
