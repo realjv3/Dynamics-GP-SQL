@@ -13,7 +13,7 @@ CASE
 	WHEN a.hold = 0 THEN ' '
 	WHEN a.hold = 1 THEN 'HOLD'
 END Hold,
-a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], CONVERT(MONEY, a.CURTRXAM, 1) [Unapplied Amt]
 FROM FRI.dbo.PM20000 a JOIN FRI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 AND VOIDED = 0
 
@@ -34,7 +34,7 @@ CASE
 	WHEN a.hold = 0 THEN ' '
 	WHEN a.hold = 1 THEN 'HOLD'
 END Hold,
-a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt],  CONVERT(MONEY, a.CURTRXAM, 1) [Unapplied Amt]
 FROM FRII.dbo.PM20000 a JOIN FRII.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 AND VOIDED = 0
 
@@ -55,7 +55,7 @@ CASE
 	WHEN a.hold = 0 THEN ' '
 	WHEN a.hold = 1 THEN 'HOLD'
 END Hold,
-a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt],  CONVERT(MONEY, a.CURTRXAM, 1) [Unapplied Amt]
 FROM FRNJ.dbo.PM20000 a JOIN FRNJ.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 AND VOIDED = 0
 
@@ -76,7 +76,7 @@ CASE
 	WHEN a.hold = 0 THEN ' '
 	WHEN a.hold = 1 THEN 'HOLD'
 END Hold,
-a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt],  CONVERT(MONEY, a.CURTRXAM, 1) [Unapplied Amt]
 FROM MASPK.dbo.PM20000 a JOIN MASPK.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 AND VOIDED = 0
 
@@ -97,7 +97,7 @@ CASE
 	WHEN a.hold = 0 THEN ' '
 	WHEN a.hold = 1 THEN 'HOLD'
 END Hold,
-a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt],  CONVERT(MONEY, a.CURTRXAM, 1) [Unapplied Amt]
 FROM MGMT.dbo.PM20000 a JOIN MGMT.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 AND VOIDED = 0
 
@@ -118,7 +118,7 @@ CASE
 	WHEN a.hold = 0 THEN ' '
 	WHEN a.hold = 1 THEN 'HOLD'
 END Hold,
-a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt],  CONVERT(MONEY, a.CURTRXAM, 1) [Unapplied Amt]
 FROM MI.dbo.PM20000 a JOIN MI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 AND VOIDED = 0
 
@@ -139,7 +139,7 @@ CASE
 	WHEN a.hold = 0 THEN ' '
 	WHEN a.hold = 1 THEN 'HOLD'
 END Hold,
-a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt],  CONVERT(MONEY, a.CURTRXAM, 1) [Unapplied Amt]
 FROM SHIRL.dbo.PM20000 a JOIN SHIRL.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 AND VOIDED = 0
 
@@ -160,7 +160,7 @@ CASE
 	WHEN a.hold = 0 THEN ' '
 	WHEN a.hold = 1 THEN 'HOLD'
 END Hold,
-a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt],  CONVERT(MONEY, a.CURTRXAM, 1) [Unapplied Amt]
 FROM REI.dbo.PM20000 a JOIN REI.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 AND VOIDED = 0
 
@@ -181,7 +181,7 @@ CASE
 	WHEN a.hold = 0 THEN ' '
 	WHEN a.hold = 1 THEN 'HOLD'
 END Hold,
-a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt], a.CURTRXAM [Unapplied Amt]
+a.TRXDSCRN Description, CONVERT(MONEY, DOCAMNT, 1) [Original Amt],  CONVERT(MONEY, a.CURTRXAM, 1) [Unapplied Amt]
 FROM REII.dbo.PM20000 a JOIN REII.dbo.PM00200 b ON a.VENDORID = b.VENDORID
 AND VOIDED = 0
 

@@ -11,6 +11,13 @@ CREATE TABLE ##1 (employid int, trxbegdt datetime, untstopy float); --using this
 CREATE TABLE ##2 (EMPLOYID INT, BUYUPF CHAR(6), BUYUPS CHAR (6), COREF CHAR(5), CORES CHAR(5), DFHR CHAR(4), DFS CHAR(3), DSHR CHAR(4), DSS CHAR(3), VFHR CHAR(4), VFS CHAR(3), VSHR CHAR(4), VSS CHAR(3)); --using this table for pivoted medical deductions per employee
 CREATE TABLE ##3 (EMPLOYID INT, SAL DECIMAL (19,2), RG DECIMAL (19,2), R3 DECIMAL (19,2), R4 DECIMAL (19,2)); --using this table for pivoted pay codes/rates
 
+INSERT INTO ##1		--inserting into a temp table for sum of employee's hours, one row per pay period; the sum of hours will then be averaged in below main select statement
+SELECT a.employid, a.trxbegdt, sum(a.untstopy)
+FROM upr30300 a join upr00100 b on a.employid = b.employid 
+WHERE trxbegdt > '2014-03-01'								--SPECIFY HERE FROM WHICH DATE YOU WANT EMPLOYEES HOURS AVERAGED
+AND b.inactive = 0 
+AND untstopy > 0
+GROUP BY a.employid, a.trxbegdt;
 
 WITH PivotMed AS	--create CTE with grouping, spread and aggregation fields; spreading and aggregation fields happen to be the same in this case - DEDUCTON
 (					--this is to get and then pivot employees' active medical deductions
@@ -40,14 +47,6 @@ SELECT *
 FROM PivotPay
 PIVOT( MAX(PAYRTAMT)
 		FOR PAYRCORD in([SAL], [RG], [R3], [R4])) AS PP;
-
-INSERT INTO ##1		--inserting into a temp table for sum of employee's hours, one row per pay period; the sum of hours will then be averaged in below main select statement
-SELECT a.employid, a.trxbegdt, sum(a.untstopy)
-FROM upr30300 a join upr00100 b on a.employid = b.employid 
-WHERE trxbegdt > '2014-03-01'								--SPECIFY HERE FROM WHICH DATE YOU WANT EMPLOYEES HOURS AVERAGED
-AND b.inactive = 0 
-AND untstopy > 0
-GROUP BY a.employid, a.trxbegdt;
 
 WITH GROSS AS
 (
